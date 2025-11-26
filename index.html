@@ -1,12 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Vastbitloud</title>
-  <meta http-equiv="refresh" content="0; url=login.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vastbitloud - Login</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #0d1b2a, #1e3a8a);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        width: 90%;
+        max-width: 350px;
+        border-radius: 12px;
+        color: white;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #1e3a8a;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #314fbf;
+    }
+
+    .link {
+        color: #fff;
+        margin-top: 10px;
+        display: block;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-  Redirecionando...
+
+<div class="container" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Usuário">
+    <input type="password" id="loginPass" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    <span class="link" onclick="mostrarRegister()">Criar Conta</span>
+</div>
+
+<div class="container" id="registerBox" style="display:none;">
+    <h2>Registrar</h2>
+    <input type="text" id="regUser" placeholder="Usuário">
+    <input type="password" id="regPass" placeholder="Senha">
+    <button onclick="registrar()">Registrar</button>
+    <span class="link" onclick="mostrarLogin()">Já tenho conta</span>
+</div>
+
+<script>
+function mostrarRegister() {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("registerBox").style.display = "block";
+}
+
+function mostrarLogin() {
+    document.getElementById("registerBox").style.display = "none";
+    document.getElementById("loginBox").style.display = "block";
+}
+
+function registrar() {
+    alert("Cadastro salvo localmente! (Versão sem backend)");
+}
+
+function login() {
+    alert("Login local! (Versão sem backend)");
+}
+</script>
+
 </body>
 </html>
