@@ -1,20 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - Vastbitloud</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="card">
-    <h2>Entrar</h2>
-    <input id="phone" type="tel" placeholder="Telefone">
-    <input id="pass" type="password" placeholder="Senha">
-    <button onclick="login()">Entrar</button>
-    <a class="link" href="register.html">Criar conta</a>
-  </div>
 
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    /* IMAGEM DE FUNDO */
+    background: url("bg.png") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .card {
+    background: rgba(0,0,0,0.55);
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
+  button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #0066ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover { background: #0050cc; }
+
+  a {
+    color: #66aaff;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h2>Entrar</h2>
+  <input id="phone" type="tel" placeholder="Telefone">
+  <input id="pass" type="password" placeholder="Senha">
+  <button onclick="login()">Entrar</button>
+  <a href="register.html">Criar conta</a>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
