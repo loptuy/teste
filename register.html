@@ -1,21 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cadastro - Vastbitloud</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="card">
-    <h2>Criar Conta</h2>
-    <input id="user" type="text" placeholder="Nome de Usuário">
-    <input id="phone" type="tel" placeholder="Telefone">
-    <input id="pass" type="password" placeholder="Senha">
-    <button onclick="registerUser()">Cadastrar</button>
-    <a class="link" href="login.html">Já tenho conta</a>
-  </div>
 
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    /* IMAGEM DE FUNDO */
+    background: url("bg.png") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .card {
+    background: rgba(0,0,0,0.55);
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
+  button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #0066ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover { background: #0050cc; }
+
+  a {
+    color: #66aaff;
+    margin-top: 10px;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+  }
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h2>Criar Conta</h2>
+  <input id="user" type="text" placeholder="Nome de Usuário">
+  <input id="phone" type="tel" placeholder="Telefone">
+  <input id="pass" type="password" placeholder="Senha">
+  <button onclick="registerUser()">Cadastrar</button>
+  <a href="login.html">Já tenho conta</a>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
