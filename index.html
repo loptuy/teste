@@ -3,103 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vastbitloud - Login</title>
+<title>Vastbitloud - Login/Cadastro</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom right, #0d1b2a, #1e3a8a);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: url("fundo.png") no-repeat center center/cover;
+    color: white;
+  }
 
-    .container {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        padding: 30px;
-        width: 90%;
-        max-width: 350px;
-        border-radius: 12px;
-        color: white;
-        text-align: center;
-        box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    padding: 10px;
+  }
 
-    h2 {
-        margin-bottom: 20px;
-    }
+  .card {
+    background: rgba(0,0,0,0.55);
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+  }
 
-    input {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 8px;
-    }
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
 
-    button {
-        width: 100%;
-        padding: 12px;
-        background: #1e3a8a;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        margin-top: 10px;
-        cursor: pointer;
-    }
+  button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #0066ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
-    button:hover {
-        background: #314fbf;
-    }
+  button:hover { background: #0050cc; }
 
-    .link {
-        color: #fff;
-        margin-top: 10px;
-        display: block;
-        cursor: pointer;
-        text-decoration: underline;
-    }
+  a {
+    color: #66aaff;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .hidden { display: none; }
 </style>
 </head>
 <body>
 
-<div class="container" id="loginBox">
-    <h2>Login</h2>
-    <input type="text" id="loginUser" placeholder="Usuário">
-    <input type="password" id="loginPass" placeholder="Senha">
-    <button onclick="login()">Entrar</button>
-    <span class="link" onclick="mostrarRegister()">Criar Conta</span>
+<!-- LOGIN -->
+<div id="loginBox" class="card">
+  <h2>Entrar</h2>
+  <input id="phoneLogin" type="tel" placeholder="Telefone">
+  <input id="passLogin" type="password" placeholder="Senha">
+  <button onclick="login()">Entrar</button>
+  <a onclick="showRegister()">Criar conta</a>
 </div>
 
-<div class="container" id="registerBox" style="display:none;">
-    <h2>Registrar</h2>
-    <input type="text" id="regUser" placeholder="Usuário">
-    <input type="password" id="regPass" placeholder="Senha">
-    <button onclick="registrar()">Registrar</button>
-    <span class="link" onclick="mostrarLogin()">Já tenho conta</span>
+<!-- CADASTRO -->
+<div id="registerBox" class="card hidden">
+  <h2>Criar Conta</h2>
+  <input id="userReg" type="text" placeholder="Nome de Usuário">
+  <input id="phoneReg" type="tel" placeholder="Telefone">
+  <input id="passReg" type="password" placeholder="Senha">
+  <button onclick="registerUser()">Cadastrar</button>
+  <a onclick="showLogin()">Já tenho conta</a>
 </div>
 
 <script>
-function mostrarRegister() {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("registerBox").style.display = "block";
+function showMessage(message, type="error") {
+  let msg = document.createElement("div");
+  msg.textContent = message;
+  msg.style.position = "fixed";
+  msg.style.top = "20px";
+  msg.style.left = "50%";
+  msg.style.transform = "translateX(-50%)";
+  msg.style.padding = "12px 20px";
+  msg.style.background = type === "error" ? "#ff4d4d" : "#4CAF50";
+  msg.style.color = "#fff";
+  msg.style.borderRadius = "8px";
+  msg.style.zIndex = "9999";
+  document.body.appendChild(msg);
+  setTimeout(() => msg.remove(), 2500);
 }
 
-function mostrarLogin() {
-    document.getElementById("registerBox").style.display = "none";
-    document.getElementById("loginBox").style.display = "block";
+function showRegister() {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.remove("hidden");
 }
 
-function registrar() {
-    alert("Cadastro salvo localmente! (Versão sem backend)");
+function showLogin() {
+  document.getElementById("registerBox").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+}
+
+function registerUser() {
+  const user = document.getElementById("userReg").value.trim();
+  const phone = document.getElementById("phoneReg").value.trim();
+  const pass  = document.getElementById("passReg").value.trim();
+
+  if (!user || !phone || !pass) {
+    showMessage("Preencha todos os campos!");
+    return;
+  }
+
+  localStorage.setItem("vast_user", user);
+  localStorage.setItem("vast_phone", phone);
+  localStorage.setItem("vast_pass", pass);
+
+  showMessage("Conta criada com sucesso!", "success");
+
+  setTimeout(() => showLogin(), 1500);
 }
 
 function login() {
-    alert("Login local! (Versão sem backend)");
+  const phone = document.getElementById("phoneLogin").value.trim();
+  const pass  = document.getElementById("passLogin").value.trim();
+
+  const savedPhone = localStorage.getItem("vast_phone");
+  const savedPass = localStorage.getItem("vast_pass");
+
+  if (phone === savedPhone && pass === savedPass) {
+    showMessage("Login realizado!", "success");
+    setTimeout(() => {
+      window.location.href = "https://sites.google.com/view/vastbitloud";
+    }, 1000);
+  } else {
+    showMessage("Telefone ou senha incorretos!");
+  }
 }
 </script>
 
